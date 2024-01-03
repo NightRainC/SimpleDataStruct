@@ -2,11 +2,11 @@ package com.fc;
 
 public class Stack<T> {
     private int size;
-    private Node<T> top;
+    private Node top;
 
-    private static class Node<T> {
-        T data;
-        Node<T> next;
+    private  class Node {
+        private T data;
+        private Node next;
     }
 
     public boolean isEmpty() {
@@ -14,8 +14,8 @@ public class Stack<T> {
     }
 
     public void push(T data) {
-        Node<T> oldNode = top;
-        Node<T> newNode = new Node<>();
+        Node oldNode = top;
+        Node newNode = new Node();
         newNode.next = oldNode;
         newNode.data = data;
         top = newNode;
@@ -29,7 +29,7 @@ public class Stack<T> {
 
     public T pop() {
         if (top == null) return null;
-        Node<T> node = top;
+        Node node = top;
         top = top.next;
         node.next = null;
         size--;
