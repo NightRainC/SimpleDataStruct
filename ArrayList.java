@@ -10,6 +10,11 @@ public class ArrayList<T> {
         total = 2;
     }
 
+    public ArrayList(int size) {
+        data = new Object[size];
+        total = size;
+    }
+
     public ArrayList(ArrayList<T> list) {
         this.size = list.size;
         this.total = list.total;
@@ -32,7 +37,7 @@ public class ArrayList<T> {
             System.err.println("插入失败!");
             return false;
         }
-        if (size + 1 >= total) {
+        if (size + 1 > total) {
             grow();
         }
 
@@ -123,6 +128,9 @@ public class ArrayList<T> {
     }
 
     public void set(int index, Object o) {
+        if (size == 0) {
+            throw new RuntimeException("列表中没有元素");
+        }
         data[index] = o;
     }
 
