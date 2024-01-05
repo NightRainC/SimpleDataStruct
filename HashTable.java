@@ -3,7 +3,6 @@ package com.fc;
 public class HashTable<K, V> {
     private final Node<K, V>[] DEFAULT_TABLE = (Node<K, V>[]) new Node[16];
     private Node<K, V>[] table = DEFAULT_TABLE;
-    private ArrayList<Node<K, V>> entry;
     private int size;
 
     class Node<K, V> {
@@ -133,7 +132,7 @@ public class HashTable<K, V> {
      */
     public ArrayList<Node<K, V>> getEntry() {
         if (size == 0) return null;
-        entry = new ArrayList<>(size);
+        ArrayList<Node<K, V>> entry = new ArrayList<>(size);
         Node<K, V> node;
         for (int i = 0, k = 0; k < table.length && i < size; k++) {
             node = table[k];
@@ -143,7 +142,7 @@ public class HashTable<K, V> {
                 node = node.next;
             }
         }
-        return this.entry;
+        return entry;
     }
 
 
